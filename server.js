@@ -1,5 +1,6 @@
 let express = require('express');
 const logger = require('morgan');
+const routes = require('./routes/index')
 let app = express();
 let PORT = PORT.env || 3000;
 let mongoose = require('mongoose');
