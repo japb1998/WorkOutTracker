@@ -1,20 +1,18 @@
 let express = require('express');
 const logger = require('morgan');
-const routes = require('./routes/index')
+const route = require('./routes/index')
 let app = express();
-let PORT = PORT.env || 3000;
+const PORT = process.env.PORT || 3000;
 let mongoose = require('mongoose');
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
-app.use(routes);
+app.use(route);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", { useNewUrlParser: true }).then(
-    app.listen(PORT).then(()=>{
+    app.listen(PORT,()=>{
         console.log(`listening to port ${PORT}`)
-    }).catch((err)=>{
-        console.log(err);
     })
 )
 
