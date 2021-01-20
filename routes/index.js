@@ -1,8 +1,11 @@
 const router = require('express').Router();
 const mongoose = require('mongoose');
-const { workOut } = require('../models/workout');
+const { Workout } = require('../models/workout');
 const path = require('path');
+const apiRoutes = require('./workOutApi.js');
 
+
+router.use('/api',apiRoutes);
 
 router.get('/',(req,res)=>{
     res.sendFile(path.join( __dirname ,'../views/index.html'));
@@ -18,4 +21,4 @@ router.get('/stats',(req,res)=>{
    
 });
 
-module.exports=router;
+module.exports = router;
